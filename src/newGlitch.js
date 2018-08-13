@@ -1,5 +1,5 @@
 var {File} = require("./FileGlitch.js");
-var videoNames = require("../glitch_cli.js");
+var videoNames = require("../glitch.js");
 
 console.log("loading...");
 

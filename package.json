@@ -4,7 +4,7 @@
   "description": "NodeJS Video Glitcher",
   "main": "newGlitch.js",
   "preferGlobal": true,
-  "bin": "./glitch_cli.js",
+  "bin": "./glitch.js",
   "scripts": {
     "test": "jest --env=node"
   },
