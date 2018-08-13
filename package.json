@@ -1,0 +1,26 @@
+{
+  "name": "videoglitcher",
+  "version": "1.0.0",
+  "description": "NodeJS Video Glitcher",
+  "main": "newGlitch.js",
+  "preferGlobal": true,
+  "bin": "./glitch_cli.js",
+  "scripts": {
+    "test": "jest --env=node"
+  },
+  "author": "WilliamHiggs",
+  "license": "ISC",
+  "dependencies": {
+    "npm": "6.3.0"
+  },
+  "providedServices": {
+    "tester": {
+      "versions": {
+        "1.0.0": "provideTester"
+      }
+    }
+  },
+  "devDependencies": {
+    "jest": "^23.4.2"
+  }
+}
