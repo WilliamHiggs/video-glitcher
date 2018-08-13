@@ -10,7 +10,7 @@ _____
 ## Glitch files
 enter in your terminal:
 ```
-node glitch_cli "VideoName01.mp4" "VideoName02.mkv"
+node glitch "VideoName01.mp4" "VideoName02.avi"
 ```
 arguments must be one or more strings, pointing at your video directory.
 _____

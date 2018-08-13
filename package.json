@@ -2,7 +2,7 @@
   "name": "videoglitcher",
   "version": "1.0.0",
   "description": "NodeJS Video Glitcher",
-  "main": "newGlitch.js",
+  "main": "./src/newGlitch.js",
   "preferGlobal": true,
   "bin": "./glitch.js",
   "scripts": {
