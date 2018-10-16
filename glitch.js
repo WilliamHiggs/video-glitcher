@@ -18,4 +18,7 @@ checkArgs()
     var newGlitch = require("./src/newGlitch.js"),
         FileGlitch = require("./src/FileGlitch.js");
   })
-  .catch(error => console.log(error.message));
+  .catch(error => {
+    console.log(error.message);
+    process.exitCode = 1;
+  });

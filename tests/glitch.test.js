@@ -1,5 +1,6 @@
-var args = require("../glitch.js");
+//var args = require("../glitch.js");
+var assert = require('assert');
 
-test("type of args is an array ()", () => {
-  expect(typeof args).toBe("object");
-});
+/*
+**@TODO REWRITE TESTS FOR mocha
+*/
