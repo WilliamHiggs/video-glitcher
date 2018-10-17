@@ -11,6 +11,7 @@
   "author": "WilliamHiggs",
   "license": "ISC",
   "dependencies": {
+    "chai": "4.2.0",
     "mocha": "5.2.0",
     "npm": "6.4.1"
   },

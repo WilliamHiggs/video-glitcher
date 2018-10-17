@@ -11,6 +11,9 @@ function newGlitch(fileName) {
   ** @TODO use node event emiter to handle these as events.
   **       count the iterations of the event and stdout it
   **       when the process is complete.
+  **       make an event factory in new directory,
+  **       use the filetype as a paramater for creation
+  **       emit event which triggers the file methods ??? profit
   */
   if (fileType === "mp4") {
     file.glitchMP4();
@@ -33,6 +36,7 @@ try {
   /*
   **@TODO check all videoNames are valid before attempting to glitch them to avoid
   **      the process dying half way through a glitch session.
+  **      Make this a promise instead of a try/catch block. see glitch.js for refs.
   */
   videoNames.forEach(videoName => newGlitch(videoName));
 }

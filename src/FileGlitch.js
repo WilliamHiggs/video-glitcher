@@ -4,7 +4,7 @@ const path = require('path');
 class File {
   constructor(name) {
     this.name = name;
-    this.fileName = this.name.substring(0, this.name.indexOf("."));
+    this.fileName = this.name.substring(0, this.name.length - 4);
     this.fileType = path.extname(this.name).substring(1);
     this.rawData = fs.readFileSync(this.name);
     this.data = this.rawData.toString();
