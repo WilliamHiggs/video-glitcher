@@ -6,17 +6,13 @@ var videoNames = require("../glitch.js");
 console.log("loading...");
 
 function newGlitch(fileName) {
-  var file = new File(fileName),
-    fileType = path.extname(fileName).substring(1);
-  /*
-  ** @TODO use node event emiter to handle these as events.
-  **       count the iterations of the event and stdout it
-  **       when the process is complete.
-  **       make an event factory in new directory,
-  **       use the filetype as a paramater for creation
-  **       emit event which triggers the file methods ??? profit
-  */
-  if (fileType === "mp4") {
+  var file = new File(fileName);
+  var fileType = path.extname(fileName)
+    .substring(1)
+    .toLowerCase();
+
+  fileType
+  if (fileType === "mp4" || fileType === "mov") {
     file.glitchMP4();
   } else if (fileType === "mkv") {
     file.glitchMKV();
@@ -62,7 +58,7 @@ try {
   var pathsExist = pathChecker(videoNames);
   if (
     pathsExist.pathsFound === true &&
-    pathExist.badPaths.length === 0
+    pathsExist.badPaths.length === 0
   ) {
     videoNames.forEach(videoName => newGlitch(videoName));
   } else if (
