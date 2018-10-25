@@ -11,7 +11,6 @@ function newGlitch(fileName) {
     .substring(1)
     .toLowerCase();
 
-  fileType
   if (fileType === "mp4" || fileType === "mov") {
     file.glitchMP4();
   } else if (fileType === "mkv") {
