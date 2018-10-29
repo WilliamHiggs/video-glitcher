@@ -73,7 +73,6 @@ catch(error) {
 }
 finally {
   console.log("process finished");
-  process.exitCode = 0;
 }
 
 module.exports = {
