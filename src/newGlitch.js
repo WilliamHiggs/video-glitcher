@@ -11,17 +11,24 @@ function newGlitch(fileName) {
     .substring(1)
     .toLowerCase();
 
-  if (fileType === "mp4" || fileType === "mov") {
-    file.glitchMP4();
-  } else if (fileType === "mkv") {
-    file.glitchMKV();
-  } else if (fileType === "avi") {
-    file.glitchAVI();
-  } else {
-    throw new Error("Invalid File Type");
-    process.exitCode = 1;
-    return;
-  }
+  switch (fileType) {
+    case "mp4":
+      file.glitchMP4(false);
+      break;
+    case "mov":
+      file.glitchMP4(true);
+      break;
+    case "mkv":
+      file.glitchMKV();
+      break;
+    case "avi":
+      file.glitchAVI();
+    default:
+      throw new Error("Invalid File Type");
+      process.exitCode = 1;
+      return;
+    }
+
   file.generate();
   //return file.rawData;
 }
@@ -56,7 +63,7 @@ function pathChecker(pathArray) {
 try {
   var pathsExist = pathChecker(videoNames);
   if (
-    pathsExist.pathsFound === true &&
+    pathsExist.pathsFound &&
     pathsExist.badPaths.length === 0
   ) {
     videoNames.forEach(videoName => newGlitch(videoName));
@@ -64,7 +71,7 @@ try {
     pathsExist.pathsFound === false &&
     pathsExist.badPaths.length > 0
   ) {
-    throw new Error(`Could not find the following files: ${pathsExist.pathsFound}`);
+    throw new Error(`Could not find the following files: ${pathsExist.badPaths}`);
   }
 }
 catch(error) {

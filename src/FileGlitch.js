@@ -1,5 +1,12 @@
-const fs = require("fs");
-const path = require('path');
+const fs = require("fs"),
+      path = require('path'),
+      config = require("../config.js");
+
+const avi = config.avi
+      mkv= config.mkv,
+      mp4 = config.mp4,
+      mov = config.mov;
+
 
 class File {
   constructor(name) {
@@ -36,13 +43,14 @@ class File {
     return i;
   }
 
-  glitchAVI(off, val, freq, repeat, start, end) {
-    val = val || 0;
-    repeat = repeat || 100;
-    off = off || 10000;
-    freq = freq || 1;
-    start = start || 0;
-    end = end || 100;
+  glitchAVI() {
+
+    let val = avi.val,
+        repeat = avi.repeat,
+        off = avi.off,
+        freq = avi.freq,
+        start = avi.start,
+        end = avi.end;
 
     var x = 0,
       startDataLength =
@@ -60,13 +68,14 @@ class File {
     }
   }
 
-  glitchMKV(off, val, freq, repeat, start, end) {
-    val = val || 0;
-    repeat = repeat || 100;
-    off = off || 10000;
-    freq = freq || 1;
-    start = start || 0;
-    end = end || 100;
+  glitchMKV() {
+
+    let val = mkv.val,
+        repeat = mkv.repeat,
+        off = mkv.off,
+        freq = mkv.freq,
+        start = mkv.start,
+        end = mkv.end;
 
     var x = 0,
       startDataLength = Math.round(this.rawData.length * (start / 100.0)),
@@ -88,28 +97,38 @@ class File {
     }
   };
 
-  glitchMP4(val, freq, repeat, start, end, left, right) {
-    val = val || 0;
-    repeat = repeat || 100;
-    freq = freq || 1;
-    start = start || 0;
-    end = end || 100;
-    left = left || 10;
-    right = right || 90;
+  glitchMP4(isMov) {
+
+    if (isMov) {
+      var val = mov.val,
+          repeat = mov.repeat,
+          freq = mov.freq,
+          start = mov.start,
+          end = mov.end,
+          left = mov.left,
+          right = mov.right;
+    } else {
+      var val = mp4.val,
+          repeat = mp4.repeat,
+          freq = mp4.freq,
+          start = mp4.start,
+          end = mp4.end,
+          left = mp4.left,
+          right = mp4.right;
+    }
 
     if (start >= end) {
-      console.log("Start value must be less than end value.");
+      console.log("Start value must be less than end value. See config.js");
       return;
     }
 
     var x = 0;
-      var MPEGStart = this.getMPEGStart(this.data),
+    var MPEGStart = this.getMPEGStart(this.data),
         startDataLength =
           MPEGStart +
           Math.round((this.rawData.length - MPEGStart) * (start / 100.0)),
-        endDataLength = Math.round(
-          (this.rawData.length - MPEGStart) * (end / 100.0)
-        );
+        endDataLength =
+          Math.round((this.rawData.length - MPEGStart) * (end / 100.0));
 
       for (; startDataLength < endDataLength; startDataLength++) {
         if (
@@ -120,8 +139,8 @@ class File {
           x % freq == 0
         ) {
           var nextSect = this.getMPEGDataSect(this.rawData.slice(startDataLength + 3)),
-            leftNextSect = parseInt(nextSect * (left / 100.0)),
-            rightNextSect = parseInt(nextSect * (right / 100.0));
+              leftNextSect = parseInt(nextSect * (left / 100.0)),
+              rightNextSect = parseInt(nextSect * (right / 100.0));
 
           for (; leftNextSect < rightNextSect; leftNextSect++) {
             if (leftNextSect % (repeat * 100) === 0) {
