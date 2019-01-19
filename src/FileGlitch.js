@@ -151,9 +151,7 @@ class File {
         x++;
       }
   };
-  /*
-  **@TODO Have the glitched file saved within its orginal folder.
-  */
+  
   generate(fn) {
     if (fn == undefined) {
       fs.writeFileSync(

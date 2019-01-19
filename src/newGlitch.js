@@ -1,9 +1,8 @@
-var { File } = require("./FileGlitch.js");
-const path = require('path');
-const fs = require('fs');
-var videoNames = require("../glitch.js");
+const path = require('path'),
+      fs = require('fs');
 
-console.log("loading...");
+var { File } = require("./FileGlitch.js"),
+    videoNames = require("../glitch.js");
 
 function newGlitch(fileName) {
   var file = new File(fileName);
@@ -58,7 +57,6 @@ function pathChecker(pathArray) {
     return pathCheck;
   }
 };
-
 
 try {
   var pathsExist = pathChecker(videoNames);
