@@ -30,5 +30,4 @@ checkArgs()
   })
   .finally(() => {
     loadWheel.send('end');
-    loadWheel.kill('SIGINT');
   });

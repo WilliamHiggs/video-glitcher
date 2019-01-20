@@ -44,6 +44,7 @@ process.on('message', (message) => {
     loadWheel.loadInterval();
   } else if (message == 'end') {
     loadWheel.stopInterval();
+    process.disconnect();
   }
 });
 
