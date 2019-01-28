@@ -5,8 +5,19 @@ var { File } = require("./FileGlitch.js"),
     videoNames = require("../glitch.js");
 
 function newGlitch(fileName) {
-  var file = new File(fileName);
-  var fileType = path.extname(fileName)
+
+  if (
+      !fileName ||
+      typeof(fileName) !== "string" ||
+      fileName.length === 0
+    ) {
+    throw new Error("fileName must be a a valid string");
+    process.exitCode = 1;
+    return;
+  }
+
+  let file = new File(fileName);
+  let fileType = path.extname(fileName)
     .substring(1)
     .toLowerCase();
 

@@ -3,9 +3,6 @@ var chai = require('chai')
   , expect = chai.expect
   , should = chai.should();
 
-/*
-**@TODO REWRITE TESTS FOR mocha
-*/
 describe("FileGlitch.js main glitch module", () => {
   describe("File class constuction", () => {
     it("builds a 'new' File with constuctor", () => {

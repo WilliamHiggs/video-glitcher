@@ -2,13 +2,12 @@
 
 const { fork } = require('child_process');
 const loadWheel = fork(`${__dirname}/src/loader.js`);
+const args = process.argv.slice(2);
 
 const checkArgs = () => {
   return new Promise((resolve, reject) => {
 
-    var args = process.argv.slice(2);
     loadWheel.send('start');
-    module.exports = args;
 
     if (args.length === 0) {
       let reason = new Error('no arguments given');
@@ -21,8 +20,9 @@ const checkArgs = () => {
 
 checkArgs()
   .then(resolve => {
-    var newGlitch = require("./src/newGlitch.js"),
-        FileGlitch = require("./src/FileGlitch.js");
+    module.exports = args;
+    const newGlitch = require("./src/newGlitch.js"),
+          FileGlitch = require("./src/FileGlitch.js");
   })
   .catch(error => {
     console.log(error.message);

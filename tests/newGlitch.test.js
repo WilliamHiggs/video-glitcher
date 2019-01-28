@@ -61,4 +61,17 @@ describe("newGlitch.js handles new instances of glitches", () => {
       expect(badCheck.badPaths).to.include("./Oh-no/badPath.nope");
     });
   });
+  describe("should throw new error for invalid fileNames", () => {
+    it("should throw new error for undefined fileName", () => {
+      expect(() => newGlitch()).to.throw(/fileName must be a a valid string/);
+    });
+    it("should throw new error for any other type than string", () => {
+      expect(() => newGlitch({})).to.throw(/fileName must be a a valid string/);
+      expect(() => newGlitch([])).to.throw(/fileName must be a a valid string/);
+      expect(() => newGlitch(0)).to.throw(/fileName must be a a valid string/);
+    });
+    it("should throw new error for an empty string", () => {
+      expect(() => newGlitch("")).to.throw(/fileName must be a a valid string/);
+    });
+  });
 });
