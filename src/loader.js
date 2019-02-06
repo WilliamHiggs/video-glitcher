@@ -5,10 +5,14 @@ class loader {
       [
         '\u2801', '\u2803', '\u2807', '\u2827', '\u2837',
         '\u283F', '\u283E', '\u283C', '\u2838', '\u2818', '\u2808'
-      ] :
+      ] : process.platform == 'linux' ?
       [
         '|', '/', '-', '\\', '|', '/', '-', '\\'
+      ] :
+      [
+        '◐', '◓', '◑', '◒'
       ];
+
     this.counter = 0;
     this.loadedInterval;
     console.log("loading...");
