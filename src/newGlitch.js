@@ -70,7 +70,14 @@ function pathChecker(pathArray) {
 };
 
 try {
-  var pathsExist = pathChecker(videoNames);
+  let pathsExist;
+
+  if (typeof videoNames !== 'object') {
+    pathsExist = pathChecker(videoNames);
+  } else {
+    throw new Error('No videoNames passed to pathChecker');
+  }
+
   if (
     pathsExist.pathsFound &&
     pathsExist.badPaths.length === 0

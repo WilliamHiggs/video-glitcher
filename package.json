@@ -6,14 +6,16 @@
   "preferGlobal": true,
   "bin": "./glitch.js",
   "scripts": {
-    "test": "mocha ./tests"
+    "test": "nyc mocha ./tests"
   },
   "author": "WilliamHiggs",
   "license": "ISC",
   "dependencies": {
     "chai": "4.2.0",
     "mocha": "5.2.0",
-    "npm": "6.4.1"
+    "npm": "6.9.0",
+    "nyc": "14.1.1",
+    "sinon": "7.3.2"
   },
   "providedServices": {
     "tester": {

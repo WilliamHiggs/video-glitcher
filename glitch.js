@@ -26,6 +26,7 @@ checkArgs()
   })
   .catch(error => {
     console.log(error.message);
+    loadWheel.send('end');
     process.exitCode = 1;
   })
   .finally(() => {
