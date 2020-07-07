@@ -15,7 +15,6 @@ class loader {
 
     this.counter = 0;
     this.loadedInterval;
-    console.log("loading...");
   }
 
   next(nextSpinner) {
@@ -48,7 +47,7 @@ process.on('message', (message) => {
     loadWheel.loadInterval();
   } else if (message == 'end') {
     loadWheel.stopInterval();
-    process.disconnect();
+    process.kill(process.pid);
   }
 });
 

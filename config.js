@@ -2,7 +2,8 @@
 * WARNING: these are the basic defaut parameters for glitching each file type.
 * mp4 and mov files start parameters cannot be more than there end paramenters
 * or you will get an error.
-* Play around with these to get varied glitching results.
+* Play around with these to get varied glitching results. decrease "repeat" to
+* create harsher and more unpredictable glitches.
 */
 
 const config = {

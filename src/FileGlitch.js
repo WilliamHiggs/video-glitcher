@@ -52,11 +52,9 @@ class File {
         start = avi.start,
         end = avi.end;
 
-    var x = 0,
-      startDataLength =
-        this.getAVIStart(this.data) +
-        Math.round(this.rawData.length * (start / 100.0)),
-      endDataLength = Math.round(this.rawData.length * (end / 100.0));
+    var x = 0;
+    let startDataLength = this.getAVIStart(this.data) + Math.round(this.rawData.length * (start / 100.0));
+    let endDataLength = Math.round(this.rawData.length * (end / 100.0));
 
     for (; startDataLength < endDataLength; startDataLength++) {
       if (x % freq == 0) {
@@ -77,9 +75,9 @@ class File {
         start = mkv.start,
         end = mkv.end;
 
-    var x = 0,
-      startDataLength = Math.round(this.rawData.length * (start / 100.0)),
-      endDataLength = Math.round(this.rawData.length * (end / 100.0));
+    var x = 0;
+    let startDataLength = Math.round(this.rawData.length * (start / 100.0));
+    let endDataLength = Math.round(this.rawData.length * (end / 100.0));
 
     for (; startDataLength < endDataLength; startDataLength++) {
       if (
@@ -123,12 +121,9 @@ class File {
     }
 
     var x = 0;
-    var MPEGStart = this.getMPEGStart(this.data),
-        startDataLength =
-          MPEGStart +
-          Math.round((this.rawData.length - MPEGStart) * (start / 100.0)),
-        endDataLength =
-          Math.round((this.rawData.length - MPEGStart) * (end / 100.0));
+    const MPEGStart = this.getMPEGStart(this.data);
+    let startDataLength = MPEGStart + (Math.round((this.rawData.length - MPEGStart) * (start / 100.0)));
+    let endDataLength = Math.round((this.rawData.length - MPEGStart) * (end / 100.0));
 
       for (; startDataLength < endDataLength; startDataLength++) {
         if (
@@ -138,7 +133,7 @@ class File {
           (this.rawData[startDataLength + 3] & 0x1f) != 5 &&
           x % freq == 0
         ) {
-          var nextSect = this.getMPEGDataSect(this.rawData.slice(startDataLength + 3)),
+          let nextSect = this.getMPEGDataSect(this.rawData.slice(startDataLength + 3)),
               leftNextSect = parseInt(nextSect * (left / 100.0)),
               rightNextSect = parseInt(nextSect * (right / 100.0));
 

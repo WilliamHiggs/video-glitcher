@@ -44,16 +44,19 @@ function newGlitch(fileName) {
 }
 
 function pathChecker(pathArray) {
-  var pathCheck = {
-    badPaths: []
+  let pathCheck = {
+    badPaths: [],
+    pathsFound: false,
   };
-  var pathsFoundArray = pathArray.map(path => {
+
+  let pathsFoundArray = pathArray.map(path => {
     if (fs.existsSync(path)) {
       return true;
     } else {
       return false;
     }
   });
+
   if (pathsFoundArray.includes(false)) {
     pathCheck.badPaths = pathsFoundArray.map((path, index) => {
       if (path === false) {
@@ -61,7 +64,9 @@ function pathChecker(pathArray) {
       }
     })
     .filter(path => path !== undefined);
+
     pathCheck.pathsFound = false;
+
     return pathCheck;
   } else {
     pathCheck.pathsFound = true;
@@ -70,9 +75,9 @@ function pathChecker(pathArray) {
 };
 
 try {
-  let pathsExist;
+  let pathsExist = {};
 
-  if (typeof videoNames !== 'object') {
+  if (Object.prototype.toString.call(videoNames) === '[object Array]') {
     pathsExist = pathChecker(videoNames);
   } else {
     throw new Error('No videoNames passed to pathChecker');
