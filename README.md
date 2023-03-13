@@ -25,3 +25,5 @@ _____
 ## Contributions
 Got an idea? Need more file types?
 Please raise an issue and/or pull request.
+
+[![william's GitHub stats](https://github-readme-stats.vercel.app/api?username=WilliamHiggs)](https://github.com/anuraghazra/github-readme-stats)
